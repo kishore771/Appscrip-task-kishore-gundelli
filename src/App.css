@@ -1,38 +1,248 @@
 .App {
+  font-family: "Poppins", sans-serif;
+  color: #222;
+  background-color: #fff;
+  padding: 0;
+  margin: 0;
+}
+
+
+.breadcrumb {
+  display: none;
+  text-align: start;
+  margin-left: 20px;
+  color: #777;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.description-container {
   text-align: center;
+  margin: 3rem 0 2rem 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.description-container h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.7rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.description-container p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.plp-wrapper {
+  width: 90%;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
+}
+
+.product-header {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e2e2e2;
 }
 
-.App-link {
-  color: #61dafb;
+.product-count-filter h2 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.filter-button {
+  border: none;
+  background: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: #555;
+}
+
+.filter-button:hover {
+  color: #000;
+}
+
+.plp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 0.7rem 0;
+}
+
+.plp-header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sort-list {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: #333;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.sort-list:focus {
+  outline: none;
+  border-color: #999;
+}
+
+.plp-content {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.filters-sidebar {
+  width: 250px;
+  flex-shrink: 0;
+  margin-right: 2rem;
+  border-right: 1px solid #eee;
+  padding-right: 1rem;
+}
+
+.product-grid-container {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.product-card {
+  text-align: center;
+  background: #fff;
+  border: 1px solid #f3f3f3;
+  border-radius: 8px;
+  padding: 1.2rem;
+  transition: 0.2s ease;
+}
+
+.product-card:hover {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.product-title {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #222;
+  margin-bottom: 0.5rem;
+}
+
+.product-price {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111;
+}
+
+
+@media (max-width: 992px) {
+  .plp-content {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+
+  .filters-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+    margin-right: 0;
+    padding-right: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .sort-list {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .breadcrumb {
+    display: block;
+  }
+
+  .description-container h1 {
+    font-size: 1.4rem;
+  }
+
+  .description-container p {
+    font-size: 0.85rem;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .count-text {
+    display: none;
+  }
+
+  .plp-header {
+    border-bottom: 1px solid #ddd;
+    padding: 0.8rem 0;
+  }
+
+  .plp-header-left {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .filter-button {
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    display: inline-block;
+  }
+
+  .sort-list {
+    font-size: 0.85rem;
+    width: 100%;
+  }
+
+  .plp-content {
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+
+  .filters-sidebar {
+    display: none;
+  }
+
+
+  .product-grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-card {
+    padding: 0.8rem;
+  }
+
+  .product-image {
+    height: 120px;
+  }
+
+  .product-title {
+    font-size: 0.8rem;
+  }
+
+  .product-price {
+    font-size: 0.8rem;
   }
 }

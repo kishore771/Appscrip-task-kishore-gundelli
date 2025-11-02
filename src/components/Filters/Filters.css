@@ -1,0 +1,69 @@
+.filters-list {
+  width: 240px;
+  border-right: 1px solid #eee;
+  font-family: "Poppins", sans-serif;
+  padding: 1rem 0;
+}
+
+.category-filter {
+  border-bottom: 1px solid #f0f0f0;
+  padding: 0.7rem 1rem;
+}
+
+.checkbox-top {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.filter-header h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #222;
+  text-transform: uppercase;
+}
+
+.arrow {
+  font-size: 0.7rem;
+  color: #444;
+  transition: transform 0.3s ease;
+}
+
+.arrow.up {
+  transform: rotate(180deg);
+}
+
+.filter-content {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #444;
+}
+
+.filter-content p {
+  margin: 0;
+  font-weight: 400;
+}
+
+
+@media (max-width: 768px) {
+  .filters-list {
+    width: 100%;
+    border: none;
+    display: none;
+  }
+
+  .filters-list.active {
+    display: block;
+    border-top: 1px solid #ddd;
+  }
+}
