@@ -9,6 +9,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [sortOrder, setSortOrder] = useState("recommended");
   const [showFilters, setShowFilters] = useState(true);
+  const [showSort, setShowSort] = useState(false);
 
   useEffect(() => {
     axios
@@ -34,13 +35,27 @@ function App() {
 
   const toggleFilters = () => setShowFilters((prev) => !prev);
 
+  const getSortLabel = () => {
+    switch (sortOrder) {
+      case "newest":
+        return "NEWEST FIRST";
+      case "popular":
+        return "POPULAR";
+      case "highToLow":
+        return "PRICE : HIGH TO LOW";
+      case "lowToHigh":
+        return "PRICE : LOW TO HIGH";
+      default:
+        return "RECOMMENDED";
+    }
+  };
+
   return (
     <div className="App">
       <Header />
 
-
       <div className="breadcrumb">
-        <span>HOME</span> | <span>SHOP</span>
+        <span>HOME</span> | <span className="shop">SHOP</span>
       </div>
 
       <div className="description-container">
@@ -53,7 +68,6 @@ function App() {
       </div>
 
       <div className="plp-wrapper">
-
         <div className="plp-header">
           <div className="plp-header-left">
             <h2 className="count-text">{sortedProducts.length} ITEMS</h2>
@@ -61,31 +75,46 @@ function App() {
               {showFilters ? "HIDE FILTER" : "SHOW FILTER"}
             </button>
           </div>
-          <select
-            id="sort"
-            value={sortOrder}
-            className="sort-list"
-            onChange={(e) => setSortOrder(e.target.value)}
-          >
-            <option value="recommended">RECOMMENDED</option>
-            <option value="newest">NEWEST FIRST</option>
-            <option value="popular">POPULAR</option>
-            <option value="highToLow">PRICE : HIGH TO LOW</option>
-            <option value="lowToHigh">PRICE : LOW TO HIGH</option>
-          </select>
-        </div>
 
+          <div className="sort-container">
+            <div
+              className="sort-header"
+              onClick={() => setShowSort((prev) => !prev)}
+            >
+              {getSortLabel()} <span className="arrow">▾</span>
+            </div>
+
+            {showSort && (
+              <div className="sort-dropdown">
+                {[
+                  { label: "RECOMMENDED", value: "recommended" },
+                  { label: "NEWEST FIRST", value: "newest" },
+                  { label: "POPULAR", value: "popular" },
+                  { label: "PRICE : HIGH TO LOW", value: "highToLow" },
+                  { label: "PRICE : LOW TO HIGH", value: "lowToHigh" },
+                ].map((item) => (
+                  <div
+                    key={item.value}
+                    className={`sort-option ${
+                      sortOrder === item.value ? "active" : ""
+                    }`}
+                    onClick={() => {
+                      setSortOrder(item.value);
+                      setShowSort(false);
+                    }}
+                  >
+                    {sortOrder === item.value && "✔"} {item.label}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
 
         <div className="plp-content">
           {showFilters && (
             <aside className="filters-sidebar">
-              <Filters
-                sortOrder={sortOrder}
-                handleSortChange={(e) => setSortOrder(e.target.value)}
-                itemCount={sortedProducts.length}
-                toggleFilters={toggleFilters}
-                showFilters={showFilters}
-              />
+              <Filters />
             </aside>
           )}
 

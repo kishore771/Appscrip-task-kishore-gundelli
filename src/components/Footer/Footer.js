@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Footer.css";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
-import { FaCcAmex, FaApplePay, FaGooglePay, FaPaypal, FaCcMastercard } from "react-icons/fa";
+import {
+  FaCcAmex,
+  FaApplePay,
+  FaGooglePay,
+  FaPaypal,
+  FaCcMastercard,
+} from "react-icons/fa";
 
 const Footer = () => {
+  const [openSection, setOpenSection] = useState(null);
+
+  const toggleSection = (section) => {
+    setOpenSection(openSection === section ? null : section);
+  };
+
   return (
     <footer className="footer">
       <div className="footer-top">
@@ -18,22 +30,42 @@ const Footer = () => {
 
         <div className="contact">
           <h4>CONTACT US</h4>
-          <p>+44 221 133 5360</p>
-          <p>customercare@mettamuse.com</p>
-          <h4 className="currency">CURRENCY</h4>
-          <p>🇺🇸 USD</p>
-          <span className="currency-note">
-            Transactions will be completed in Euros and a currency reference is available on hover.
-          </span>
+          <div className="contact-info">
+            <p>+44 221 133 5360</p>
+            <p>◆ customercare@mettamuse.com</p>
+          </div>
+
+          <div className="currency-info">
+            <h4 className="currency">CURRENCY</h4>
+            <div className="currency-option">
+              <img
+                src="https://i.postimg.cc/hP2TCCzp/United-States-of-America-(US).png"
+                alt="USD"
+                className="us-logo"
+              />
+              <p>◆ USD</p>
+            </div>
+            <span className="currency-note">
+              Transactions will be completed in Euros and a currency reference is
+              available on hover.
+            </span>
+          </div>
         </div>
       </div>
-
       <hr className="divider" />
+
+
 
       <div className="footer-bottom">
         <div className="footer-column">
-          <h4>mettā muse</h4>
-          <ul>
+          <h4 onClick={() => toggleSection("metta")}>
+            mettā muse
+            <span className="arrow">
+              {openSection === "metta" ? "−" : "+"}
+            </span>
+          </h4>
+
+          <ul className={openSection === "metta" ? "show" : ""}>
             <li>About Us</li>
             <li>Stories</li>
             <li>Artisans</li>
@@ -44,8 +76,14 @@ const Footer = () => {
         </div>
 
         <div className="footer-column">
-          <h4>QUICK LINKS</h4>
-          <ul>
+          <h4 onClick={() => toggleSection("quick")}>
+            QUICK LINKS
+            <span className="arrow">
+              {openSection === "quick" ? "−" : "+"}
+            </span>
+          </h4>
+
+          <ul className={openSection === "quick" ? "show" : ""}>
             <li>Orders & Shipping</li>
             <li>Join/Login as a Seller</li>
             <li>Payment & Pricing</li>
@@ -57,22 +95,34 @@ const Footer = () => {
         </div>
 
         <div className="footer-column follow">
-          <h4>FOLLOW US</h4>
-          <div className="social-icons">
-            <FaInstagram />
-            <FaLinkedin />
+          <h4 onClick={() => toggleSection("follow")}>
+            FOLLOW US
+            <span className="arrow">
+              {openSection === "follow" ? "−" : "+"}
+            </span>
+          </h4>
+
+          <div
+            className={`follow-content ${
+              openSection === "follow" ? "show" : ""
+            }`}
+          >
+            <div className="social-icons">
+              <FaInstagram />
+              <FaLinkedin />
+            </div>
           </div>
           <h4>mettā muse ACCEPTS</h4>
-          <div className="payment-icons">
-            <FaGooglePay />
-            <FaCcMastercard />
-            <FaPaypal />
-            <FaCcAmex />
-            <FaApplePay />
-          </div>
+            <div className="payment-icons">
+              <FaGooglePay />
+              <FaCcMastercard />
+              <FaPaypal />
+              <FaCcAmex />
+              <FaApplePay />
+            </div>
         </div>
       </div>
-
+      <hr className="divider" />
       <p className="copyright">
         Copyright © 2023 mettamuse. All rights reserved.
       </p>
@@ -81,3 +131,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

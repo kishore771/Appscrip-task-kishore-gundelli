@@ -1,11 +1,13 @@
 .App {
-  font-family: "Poppins", sans-serif;
   color: #222;
   background-color: #fff;
   padding: 0;
   margin: 0;
 }
-
+.shop{
+  font-weight: 500;
+  color: #000;
+}
 
 .breadcrumb {
   display: none;
@@ -85,12 +87,20 @@
 
 .sort-list {
   padding: 0.4rem 0.6rem;
-  border: 1px solid #ddd;
+  border: 0px solid #ddd;
   border-radius: 4px;
   font-size: 0.85rem;
   color: #333;
   background-color: #fff;
   cursor: pointer;
+}
+.sort-options{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 5px;
+  border: 0px;
+  align-items: end;
 }
 
 .sort-list:focus {
@@ -154,6 +164,46 @@
   font-weight: 600;
   color: #111;
 }
+.sort-container {
+  position: relative;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sort-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sort-dropdown {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  width: 220px;
+  background: #fff;
+  border: 1px solid #eee;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.sort-option {
+  padding: 12px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.sort-option:hover {
+  background-color: #f5f5f5;
+}
+
+.sort-option.active {
+  font-weight: 600;
+}
 
 
 @media (max-width: 992px) {
@@ -174,6 +224,7 @@
     width: 100%;
   }
 }
+
 
 @media (max-width: 600px) {
   .breadcrumb {
