@@ -1,13 +1,6 @@
 import React, { useState } from "react";
 import "./Footer.css";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
-import {
-  FaCcAmex,
-  FaApplePay,
-  FaGooglePay,
-  FaPaypal,
-  FaCcMastercard,
-} from "react-icons/fa";
 
 const Footer = () => {
   const [openSection, setOpenSection] = useState(null);
@@ -114,11 +107,7 @@ const Footer = () => {
           </div>
           <h4>mettā muse ACCEPTS</h4>
             <div className="payment-icons">
-              <FaGooglePay />
-              <FaCcMastercard />
-              <FaPaypal />
-              <FaCcAmex />
-              <FaApplePay />
+              <img src="https://i.postimg.cc/dVzv1hDz/Frame-136278.png" alt="Visa" />
             </div>
         </div>
       </div>

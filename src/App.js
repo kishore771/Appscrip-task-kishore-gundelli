@@ -10,6 +10,18 @@ function App() {
   const [sortOrder, setSortOrder] = useState("recommended");
   const [showFilters, setShowFilters] = useState(true);
   const [showSort, setShowSort] = useState(false);
+  const [wishlist, setWishlist] = useState([]);
+
+  const toggleWishlist = (productId) => {
+    setWishlist((prevWishlist) => {
+      if (prevWishlist.includes(productId)) {
+        return prevWishlist.filter((id) => id !== productId);
+      } else {
+        return [...prevWishlist, productId];
+      }
+    });
+  };
+
 
   useEffect(() => {
     axios
@@ -54,9 +66,21 @@ function App() {
     <div className="App">
       <Header />
 
+       <header className="header">
+      <nav className="nav-menu">
+        <ul>
+          <li>SHOP</li>
+          <li>SKILLS</li>
+          <li>STORIES</li>
+          <li>ABOUT</li>
+          <li>CONTACT US</li>
+        </ul>
+      </nav>
+
       <div className="breadcrumb">
         <span>HOME</span> | <span className="shop">SHOP</span>
       </div>
+    </header>
 
       <div className="description-container">
         <h1>DISCOVER OUR PRODUCTS</h1>
@@ -130,8 +154,15 @@ function App() {
                   alt={product.title}
                   className="product-image"
                 />
+                <div className="product-info">
+                  <div>
                 <h3 className="product-title">{product.title}</h3>
                 <p className="product-price">${product.price}</p>
+                </div>
+                <div className="wishlist-icon" onClick={() => toggleWishlist(product.id)}>
+                  {wishlist.includes(product.id) ? "♥" : "♡"}
+                </div>
+                </div>
               </div>
             ))}
           </section>

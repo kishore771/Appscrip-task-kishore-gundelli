@@ -40,14 +40,15 @@ const Filters = () => {
             className="filter-header"
             onClick={() => toggleFilter(category)}
           >
+            <div>
             <h4>{category}</h4>
-            <span className={`arrow ${openFilter === category ? "up" : "down"}`}>
-              ▼
-            </span>
+            <p>All</p>
+            </div>
+            <span ><img src="https://i.postimg.cc/25pr01dk/arrow-left.png"/> </span>
           </div>
           {openFilter === category && (
             <div className="filter-content">
-              <p>All</p>
+              
               <br />
 
               <p
@@ -87,7 +88,7 @@ const Filters = () => {
                   setSelectedOptions({ ...selectedOptions, children: e.target.checked })
                 }
               />
-              <label htmlFor={`${category}-option3`}>CHILDREN</label>
+              <label htmlFor={`${category}-option3`}>Baby & Kids</label>
               <br />
             </div>
             )}
