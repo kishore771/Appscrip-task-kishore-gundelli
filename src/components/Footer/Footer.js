@@ -107,7 +107,7 @@ const Footer = () => {
           </div>
           <h4>mettā muse ACCEPTS</h4>
             <div className="payment-icons">
-              <img src="https://i.postimg.cc/dVzv1hDz/Frame-136278.png" alt="Visa" />
+              <img src="https://i.postimg.cc/dVzv1hDz/Frame-136278.png" alt="payment-icons" className="payment-icons-img" />
             </div>
         </div>
       </div>
