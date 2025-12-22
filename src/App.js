@@ -81,7 +81,7 @@ function App() {
               className="sort-header"
               onClick={() => setShowSort((prev) => !prev)}
             >
-              {getSortLabel()} <span className="arrow">▾</span>
+              {getSortLabel()} <span ><img src="https://i.postimg.cc/25pr01dk/arrow-left.png"/> </span>
             </div>
 
             {showSort && (
