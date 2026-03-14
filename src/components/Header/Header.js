@@ -31,7 +31,7 @@ const Header = () => {
           />
         </div>
 
-        <h1 className="logo-text">LOGO</h1>
+        <h1 className="logo-text">E-commerce Store</h1>
 
         <div className="header-icons">
           <img
